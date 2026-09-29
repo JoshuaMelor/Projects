@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joshua Melor — Operations & Digital Solutions Specialist specializing in web development, logistics, and financial operations." />
+  <title>Joshua Melor | Operations & Digital Solutions Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0F172A;
+      --slate: #475569;
+      --muted: #64748B;
+      --line: #E2E8F0;
+      --soft: #F8FAFC;
+      --white: #FFFFFF;
+      --cyan: #0EA5E9;
+      --cyan-dark: #0284C7;
+      --emerald: #10B981;
+      --shadow: 0 20px 50px rgba(15, 23, 42, .08);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226,232,240,.7);
+    }
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--navy), #1E293B);
+      box-shadow: 0 8px 20px rgba(15,23,42,.18);
+    }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a {
+      color: var(--slate);
+      font-size: .9rem;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-dark); }
+    .nav-cta {
+      padding: 10px 17px;
+      color: white !important;
+      background: var(--navy);
+      border-radius: 10px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 84% 20%, rgba(14,165,233,.10), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(16,185,129,.07), transparent 28%),
+        var(--soft);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cyan-dark);
+      font-weight: 800;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--cyan);
+    }
+    h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+      max-width: 760px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--cyan-dark), var(--emerald));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-copy {
+      margin-top: 25px;
+      max-width: 650px;
+      font-size: 1.12rem;
+      color: var(--slate);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 19px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--navy); color: white; box-shadow: 0 10px 25px rgba(15,23,42,.15); }
+    .btn-primary:hover { box-shadow: 0 14px 30px rgba(15,23,42,.22); }
+    .btn-secondary { background: white; border-color: var(--line); color: var(--navy); }
+
+    .hero-panel {
+      position: relative;
+      min-height: 430px;
+      border-radius: 30px;
+      background: var(--navy);
+      box-shadow: 0 30px 70px rgba(15,23,42,.20);
+      overflow: hidden;
+      padding: 30px;
+    }
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(14,165,233,.18);
+      filter: blur(5px);
+      top: -90px;
+      right: -70px;
+    }
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(16,185,129,.13);
+      bottom: -100px;
+      left: -70px;
+    }
+    .dashboard {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .mini-label { color: #94A3B8; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+    .hero-panel h2 {
+      color: white;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.65rem;
+      line-height: 1.2;
+      margin-top: 7px;
+    }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .metric {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.055);
+      border-radius: 16px;
+    }
+    .metric strong { display: block; color: white; font-size: 1.5rem; }
+    .metric small { color: #94A3B8; }
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #CBD5E1;
+      font-size: .88rem;
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 5px rgba(16,185,129,.12); }
+
+    /* Sections */
+    section { padding: 105px 0; }
+    .section-head { max-width: 720px; margin-bottom: 48px; }
+    .section-kicker {
+      color: var(--cyan-dark);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-size: .76rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h2.section-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.045em;
+      line-height: 1.12;
+    }
+    .section-desc { color: var(--slate); margin-top: 14px; font-size: 1.03rem; }
+
+    /* About */
+    .about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: start; }
+    .about-text p { color: var(--slate); font-size: 1.03rem; margin-bottom: 18px; }
+    .about-highlight {
+      margin-top: 28px;
+      padding: 22px;
+      border-left: 3px solid var(--cyan);
+      background: var(--soft);
+      border-radius: 0 15px 15px 0;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .skills-wrap { display: grid; gap: 28px; }
+    .skill-group h3 { font-size: 1rem; margin-bottom: 12px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 9px; }
+    .pill {
+      padding: 9px 13px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--slate);
+      font-size: .84rem;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .projects { background: var(--soft); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 29px;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: #CBD5E1; }
+    .icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      color: var(--cyan-dark);
+      background: #E0F2FE;
+      font-weight: 800;
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+    }
+    .card:nth-child(2) .icon { color: #059669; background: #D1FAE5; }
+    .card:nth-child(3) .icon { color: #7C3AED; background: #EDE9FE; }
+    .card h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.2rem; margin-bottom: 12px; }
+    .card p { color: var(--slate); font-size: .92rem; }
+    .card-list { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
+    .card-list li { color: var(--muted); font-size: .84rem; padding-left: 17px; position: relative; }
+    .card-list li::before { content: "✓"; position: absolute; left: 0; color: var(--emerald); font-weight: 800; }
+
+    /* Training */
+    .training-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .training-item {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+    }
+    .training-number { font-size: .75rem; font-weight: 800; color: var(--cyan-dark); letter-spacing: .1em; }
+    .training-item h3 { margin: 15px 0 10px; font-size: 1.08rem; }
+    .training-item p { color: var(--slate); font-size: .9rem; }
+
+    /* Contact */
+    .contact { background: var(--navy); color: white; }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: start; }
+    .contact .section-kicker { color: #38BDF8; }
+    .contact .section-title { color: white; }
+    .contact .section-desc { color: #CBD5E1; }
+    .contact-links { margin-top: 30px; display: grid; gap: 13px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      color: #E2E8F0; font-size: .9rem;
+    }
+    .contact-link span:first-child {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border-radius: 10px; background: rgba(255,255,255,.08);
+    }
+    form {
+      padding: 28px;
+      background: white;
+      border-radius: 22px;
+      color: var(--navy);
+    }
+    .field { margin-bottom: 15px; }
+    label { display: block; font-size: .78rem; font-weight: 700; margin-bottom: 7px; }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 12px 13px;
+      outline: none;
+      color: var(--navy);
+      background: white;
+      transition: border .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(14,165,233,.10); }
+    textarea { min-height: 130px; resize: vertical; }
+    .form-btn { width: 100%; margin-top: 4px; }
+
+    footer {
+      padding: 24px 0;
+      background: #020617;
+      color: #94A3B8;
+      font-size: .78rem;
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .footer-links { display: flex; gap: 18px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 45px; }
+      .hero-panel { min-height: 360px; }
+      .cards, .training-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 40px; }
+      .contact-grid { gap: 35px; }
+    }
+
+    @media (max-width: 650px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-inner { height: 66px; }
+      .hero { padding-top: 110px; }
+      h1 { font-size: clamp(2.65rem, 14vw, 4rem); }
+      section { padding: 75px 0; }
+      .hero-panel { padding: 22px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Joshua Melor home">
+        <span class="brand-mark">JM</span>
+        <span>Joshua Melor</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Capabilities</a>
+        <a href="#training">Training</a>
+        <a class="nav-cta" href="#contact">Let's Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Operations • Digital • Finance</div>
+          <h1>Hi, I'm <span>Joshua Melor.</span></h1>
+          <p class="hero-copy">
+            Virtual Assistant, Operations & Digital Solutions Specialist focused on web development,
+            logistics tracking, financial operations, and practical digital solutions.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">View My Work <span>↗</span></a>
+            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="dashboard">
+            <div>
+              <div class="mini-label">Professional Focus</div>
+              <h2>Bridging operations with modern digital tools.</h2>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric">
+                <strong>Web</strong>
+                <small>Modern UI & rapid prototyping</small>
+              </div>
+              <div class="metric">
+                <strong>Finance</strong>
+                <small>Records, ledgers & accuracy</small>
+              </div>
+              <div class="metric">
+                <strong>Logistics</strong>
+                <small>Track & trace operations</small>
+              </div>
+              <div class="metric">
+                <strong>Ops</strong>
+                <small>High-volume execution</small>
+              </div>
+            </div>
+
+            <div class="status">
+              <span class="dot"></span>
+              <span>Focused on reliable, practical solutions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">About Me</div>
+          <h2 class="section-title">A practical operator with a growing digital toolkit.</h2>
+          <p class="section-desc">
+            Combining customer-facing experience with structured training in logistics,
+            bookkeeping, and modern web development.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              I bring experience from high-volume customer service and operations,
+              including a barista background where speed, accuracy, communication,
+              and consistency matter every day.
+            </p>
+            <p>
+              I have expanded that operational foundation through specialized training
+              in Logistics Track & Trace and Bookkeeping, while developing practical
+              skills in AI-assisted web design and rapid digital prototyping.
+            </p>
+            <div class="about-highlight">
+              My approach is simple: understand the workflow, organize the information,
+              improve the process, and build tools that make the work easier.
+            </div>
+          </div>
+
+          <div class="skills-wrap reveal">
+            <div class="skill-group">
+              <h3>Technical & Web</h3>
+              <div class="pills">
+                <span class="pill">AI-Assisted Web Design</span>
+                <span class="pill">Rapid Prototyping</span>
+                <span class="pill">Modern UI/UX</span>
+                <span class="pill">HTML/CSS Frameworks</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Operations & Finance</h3>
+              <div class="pills">
+                <span class="pill">Bookkeeping & Financial Records</span>
+                <span class="pill">Ledger Management</span>
+                <span class="pill">Track & Trace Logistics</span>
+                <span class="pill">Supply Chain Monitoring</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Core Strengths</h3>
+              <div class="pills">
+                <span class="pill">High-Volume Execution</span>
+                <span class="pill">Multitasking</span>
+                <span class="pill">Customer Communication</span>
+                <span class="pill">Problem Solving</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Capabilities</div>
+          <h2 class="section-title">Where operations meet digital execution.</h2>
+          <p class="section-desc">
+            Three complementary capability areas that define the value I bring to teams,
+            clients, and growing businesses.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon">&lt;/&gt;</div>
+            <h3>Digital & Web Solutions</h3>
+            <p>
+              Building clean, responsive digital experiences with AI-assisted workflows,
+              rapid prototyping, and modern interface principles.
+            </p>
+            <ul class="card-list">
+              <li>Responsive landing pages</li>
+              <li>Modern UI/UX concepts</li>
+              <li>AI-assisted development</li>
+              <li>Fast digital prototypes</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">₱</div>
+            <h3>Bookkeeping & Financial Management</h3>
+            <p>
+              Applying structured bookkeeping fundamentals to organize transactions,
+              maintain financial records, and support accurate reporting.
+            </p>
+            <ul class="card-list">
+              <li>Income & expense tracking</li>
+              <li>Ledger management</li>
+              <li>Financial record organization</li>
+              <li>Accuracy-focused workflows</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">↗</div>
+            <h3>Logistics & Track & Trace</h3>
+            <p>
+              Supporting shipment visibility and operational execution through structured
+              monitoring, carrier updates, and issue-resolution processes.
+            </p>
+            <ul class="card-list">
+              <li>Shipment tracking</li>
+              <li>Carrier log updates</li>
+              <li>Supply chain monitoring</li>
+              <li>Exception handling</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Training & Development</div>
+          <h2 class="section-title">Built through structured learning and hands-on practice.</h2>
+        </div>
+
+        <div class="training-grid">
+          <article class="training-item reveal">
+            <div class="training-number">01 / BOOKKEEPING</div>
+            <h3>Bookkeeping Training</h3>
+            <p>
+              Record-keeping fundamentals, financial tracking, ledgers, accounts
+              management, and accuracy standards.
+            </p>
+          </article>
+
+          <article class="training-item reveal">
+            <div class="training-number">02 / LOGISTICS</div>
+            <h3>Logistics Track & Trace Training</h3>
+            <p>
+              Supply chain monitoring, shipment tracking, process execution,
+              carrier coordination, and issue-resolution workflows.
+            </p>
+          </article>
+
+          <article class="training-item reveal">
+            <div class="training-number">03 / DIGITAL</div>
+            <h3>Self-Directed AI Web Development</h3>
+            <p>
+              Building modern digital solutions through AI-assisted development,
+              responsive layouts, UI/UX principles, and rapid prototyping.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <div class="section-kicker">Let's Connect</div>
+          <h2 class="section-title">Have a project, opportunity, or workflow to improve?</h2>
+          <p class="section-desc">
+            I'm open to opportunities where operations, digital tools, logistics,
+            or financial organization can create measurable value.
+          </p>
+
+          <div class="contact-links">
+            <!-- Replace these placeholder links with your real profiles/contact details. -->
+            <a class="contact-link" href="mailto:joshua.melor12302gmail.com">
+              <span>✉</span> joshua.melor12302gmail.com
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/joshua-melor-a1214b350" target="_blank" rel="noopener">
+              <span>in</span> www.linkedin.com/in/joshua-melor-a1214b350
+            </a>
+            <a class="contact-link" href="https://github.com/joshua-melor" target="_blank" rel="noopener">
+              <span>GH</span> GitHub / Portfolio
+            </a>
+          </div>
+        </div>
+
+        <form class="reveal" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me a little about your project or opportunity..." required></textarea>
+          </div>
+          <button class="btn btn-primary form-btn" type="submit">Send Message ↗</button>
+          <p id="form-note" style="display:none;margin-top:12px;font-size:.8rem;color:#64748B;">
+            Thanks! This demo form is ready to connect to your preferred email or backend service.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Joshua Melor. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#work">Capabilities</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      document.getElementById('form-note').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
